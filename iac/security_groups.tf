@@ -2,6 +2,12 @@ resource "aws_security_group" "jenkins-master-sg" {
   name   = "jenkins-master-sg"
   vpc_id = aws_vpc.petclinic-vpc.id
   ingress {
+    from_port       = 8082
+    protocol        = "tcp"
+    to_port         = 8082
+    security_groups = [aws_security_group.jenkins-elb-sg.id]
+  }
+  ingress {
     from_port       = 8080
     protocol        = "tcp"
     to_port         = 8080
