@@ -25,9 +25,9 @@ EOF
 }
 
 resource "aws_iam_policy" "policy" {
-  name = "ec2-ssm-policy"
+  name        = "ec2-ssm-policy"
   description = "ec2-ssm-policy"
-  policy = <<EOF
+  policy      = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -79,5 +79,5 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "attach" {
   policy_arn = aws_iam_policy.policy.arn
-  role = aws_iam_role.ssm-role.name
+  role       = aws_iam_role.ssm-role.name
 }
